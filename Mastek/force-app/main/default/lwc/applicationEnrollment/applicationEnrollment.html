@@ -1,0 +1,73 @@
+<template>
+    <!-- <canvas class="confettiCanvas" id="canvas" lwc:dom="manual"></canvas> -->
+
+    <div class="demo-only" style="padding:0.5rem;background:#2574A9">
+      <div class="slds-text-heading_medium slds-text-align_center slds-text-color_inverse">Enroll Your Applications Here</div>
+      </div>
+      <!-- <div class="demo-only" style="padding:0.5rem;background:#173766"> -->
+      <lightning-tabset>
+        <lightning-tab label="Application Enrollment Form">
+          <!-- Content for Tab 1 goes here -->
+           <div class="demo-only" style="padding:0.5rem;background:#2574A9">
+          <template if:true={ContactStatus}>
+            <div class="slds-input">
+            <lightning-record-edit-form object-api-name="Application__c">
+              <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size_1-of-2 ">
+              <lightning-input type="text" label="Name" onchange={onNameChange} required></lightning-input>
+              <lightning-input type="Date" label="Date Of Birth" onchange={onDOBChange} required>
+              </lightning-input>
+              <lightning-input-field  field-name="Application_Date__c" value={dateValue} disabled></lightning-input-field>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+              <lightning-combobox name="progress" label="Course_Enrolled__c" value={value} options={options}
+                onchange={handleChange} required></lightning-combobox>
+              <lightning-input  type="number" label="Work Experience" onchange={onExpChange} required>
+              </lightning-input>
+              <!-- <lightning-input-field  field-name="Contact__c" onchange={onContactChange}>
+              </lightning-input-field> -->
+              <lightning-input  type="file" onchange={onFileUpload} name="uploadFile"
+                label="Upload Docs">
+              </lightning-input>
+            </div>
+          </div>
+              <!-- <div class="slds-text-heading_small">{fileName}</div><br> -->
+
+              <!-- <template if:true={isLoading} style="height: 200px; position:relative">
+                <lightning-spinner variant="base" size="medium"></lightning-spinner>
+              </template> -->
+
+              <div class="slds-align_absolute-center">
+                <lightning-button variant="brand" class="slds-align_absolute-center" label="Save" disabled={disableButton} onclick={saveApplication}>
+                </lightning-button>
+              </div>
+            </lightning-record-edit-form>
+          </div>
+          </template>
+          <template if:false={ContactStatus}>
+            <div
+              class="slds-p-top_small slds-p-bottom_medium slds-align_absolute-center slds-theme_default slds-text-heading_medium">
+              Student status is inactive, please contact support for more details.
+            </div>
+          </template>
+           </div>
+        </lightning-tab>
+        <lightning-tab label="Application Status">
+          <!-- Content for Tab 2 goes here -->
+          <div class="demo-only" style="padding:0.5rem;background:#2574A9">
+          <div class="slds-m-right_small">
+            <lightning-datatable data={courselist} hide-checkbox-column columns={COLUMNS} key-field="id">
+            </lightning-datatable>
+          </div><br><br>
+          <div class="slds-m-right_small">
+            <lightning-datatable data={subjectlist} hide-checkbox-column columns={COLUMNS2} key-field="id">
+            </lightning-datatable>
+          </div>
+          <!-- <template if:false={ApplicationSubStatus}>
+            No Application Found, Please Submit It Now!!
+          </template> -->
+          </div>
+        </lightning-tab>
+      </lightning-tabset>
+
+</template>

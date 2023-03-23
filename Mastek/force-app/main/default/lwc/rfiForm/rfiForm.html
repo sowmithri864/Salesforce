@@ -1,0 +1,26 @@
+<template>
+    <lightning-card title="Please fill in the below details">
+          <lightning-record-edit-form object-api-name="Lead" onsubmit={handleSuccess}>
+            <lightning-messages></lightning-messages>
+            <div class="slds-grid slds-wrap">
+              <div class="slds-col slds-size_1-of-2">
+                <lightning-input-field class="slds-input" field-name="Name" required></lightning-input-field>
+                <lightning-input-field class="slds-input" placeholder="Email Address"  field-name="Email" required></lightning-input-field>
+                <lightning-input-field class="slds-input" placeholder="Phone Number" field-name="Phone" required></lightning-input-field>
+              </div>
+              <div class="slds-col slds-size_1-of-2">
+                <lightning-input-field class="slds-input" field-name="Address" required></lightning-input-field>
+                <lightning-input-field class="slds-input" field-name="Academic_Dept__c"
+                  required></lightning-input-field>
+                <lightning-input-field class="slds-input" field-name="DOB__c" type="date"
+                  required></lightning-input-field>
+              </div>
+            </div>
+            <lightning-input-field style="display:none" class="slds-input" field-name="Company"
+              value="MST University"></lightning-input-field>
+            <lightning-input-field style="display:none" class="slds-input" field-name="LeadSource"
+              value="Web"></lightning-input-field>
+              <lightning-button class="slds-align_absolute-center" variant="brand" type="submit" name="save" label="Save"></lightning-button>  
+          </lightning-record-edit-form>
+    </lightning-card>
+  </template>

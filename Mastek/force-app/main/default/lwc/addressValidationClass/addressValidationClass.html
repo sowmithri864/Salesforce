@@ -1,0 +1,59 @@
+<template>
+    <lightning-quick-action-panel header="Validate Address">
+        <lightning-record-view-form record-id={recordId} object-api-name='Lead'>
+            <lightning-card>
+                <lightning-button class="slds-align_absolute-center" variant="brand" label="updateAddress"
+                    title="updateAddress" onclick={updateLead}></lightning-button>
+                <h2 class="slds-m-bottom--x-small" style="color:darkslateblue; font-weight:bold;">ORIGINAL ADDRESS</h2>
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered" border="1" cellspacing="0"
+                    cellpadding="0" style="border-collapse:collapse;">
+                    <thead>
+                        <tr>
+                            <th>Street</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Country</th>
+                            <th>PostalCode</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{street}</td>
+                            <td>{city}</td>
+                            <td>{state}</td>
+                            <td>{country}</td>
+                            <td>{postalcode}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h2 class="slds-m-bottom--x-small" style="color:darkslateblue; font-weight:bold;">SUGGESTED ADDRESS</h2>
+                <h1>{status}</h1>
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered" border="1" cellspacing="0"
+                    cellpadding="0" style="border-collapse:collapse;">
+                    <thead>
+                        <tr>
+                            <th>Street</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Country</th>
+                            <th>PostalCode</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{realaddr2}</td>
+                            <td>{suggestedCity}</td>
+                            <td>{suggestedState}</td>
+                            <td>{suggestedAddress1}</td>
+                            <td>{suggestedzip5}</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </lightning-card>
+        </lightning-record-view-form>
+        <lightning-button class="slds-align_absolute-center" variant="brand" label="Verify" title="verify"
+            onclick={handleClick}></lightning-button>
+    </lightning-quick-action-panel>
+</template>
